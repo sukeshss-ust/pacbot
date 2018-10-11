@@ -38,6 +38,10 @@ variable "api_image" {
   default = ""
 }
 
+variable "ui_image" {
+  default = ""
+}
+
 variable "task_definition_name" {
   default = "nginx"
 }

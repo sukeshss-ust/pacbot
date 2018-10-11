@@ -202,7 +202,7 @@ resource "aws_alb_target_group" "alb_target_group" {
 }
 
 //Configure listener in ALB
-resource "aws_alb_listener" "ui" {
+resource "aws_alb_listener" "apis" {
   load_balancer_arn = "${aws_lb.alb_apijobs.arn}"
   port              = "80"
   protocol          = "HTTP"
@@ -767,7 +767,7 @@ resource "aws_ecs_service" "nginx" {
     container_name   = "${var.ui_container_name}"
     container_port   = "80"
   }
-    depends_on = ["aws_alb_target_group.alb_target_group", "aws_lb.alb_apijobs","aws_alb_listener.ui"]
+    depends_on = ["aws_alb_target_group.alb_target_group", "aws_lb.alb_apijobs","aws_alb_listener.apis"]
 }
 
 
